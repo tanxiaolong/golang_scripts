@@ -23,6 +23,14 @@ func NewLruCache() *LruCache {
 	return cache
 }
 
+// 清空缓存
+func (lru *LruCache)ResetLruCache() *LruCache{
+	lru.Cap = 10
+	lru.lrulist = list.New()
+	lru.CacheMap = map[interface{}]*list.Element{}
+	return lru
+}
+
 // 获取缓存的大小
 func (lru *LruCache) GetCap() int {
 	return lru.Cap
