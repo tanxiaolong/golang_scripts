@@ -15,9 +15,9 @@ type LruCache struct {
 }
 
 // 初始化一个 lrucache
-func NewLruCache() *LruCache {
+func NewLruCache(cap int) *LruCache {
 	cache := &LruCache{}
-	cache.Cap = 10
+	cache.Cap = cap
 	cache.lrulist = list.New()
 	cache.CacheMap = map[interface{}]*list.Element{}
 	return cache
