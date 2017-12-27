@@ -12,7 +12,7 @@ func w(fileName string, content string){
 
 func main(){
 	str := "hello world"
-	var buf bytes.Buffer
+	buf := bytes.NewBufferString(str)
 	n := 1
 	t0 := time.Now()
 	for i:=0;i<n;i++{
