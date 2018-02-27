@@ -66,13 +66,13 @@ func main() {
 		fmt.Println("你要写什么")
 		content := ""
 		fmt.Scanf("%s\n", &content)
-		if yesOrNo =="y"{
+		if yesOrNo == "y" {
 			isSucc, err := writeString(file, content)
 			if isSucc {
 				fmt.Println("请前去查看")
 				return
 			}
-			fmt.Println("写失败，失败原因是：%s\n",err)
+			fmt.Println("写失败，失败原因是：%s\n", err)
 		}
 	}
 

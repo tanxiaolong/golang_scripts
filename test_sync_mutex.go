@@ -23,6 +23,6 @@ func repeatedlyLock() {
 	time.Sleep(time.Second)
 }
 
-func main(){
+func main() {
 	repeatedlyLock()
 }

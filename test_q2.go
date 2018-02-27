@@ -20,6 +20,6 @@ func pase_student() {
 	fmt.Println(m)
 }
 
-func main(){
+func main() {
 	pase_student()
 }

@@ -1,18 +1,19 @@
 package main
 
 import (
-	"net/http"
 	"io"
+	"net/http"
 )
-func HelloHandler(w http.ResponseWriter, r *http.Request){
+
+func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	str := "Hello world"
-	io.WriteString(w,str)
+	io.WriteString(w, str)
 }
 
-func main(){
+func main() {
 	ht := http.HandlerFunc(HelloHandler)
-	if ht !=nil {
-		http.Handle("/hello",ht)
+	if ht != nil {
+		http.Handle("/hello", ht)
 	}
-	http.ListenAndServe(":8090",nil)
+	http.ListenAndServe(":8090", nil)
 }

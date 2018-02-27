@@ -20,7 +20,7 @@ func play(table chan int) {
 
 func getGID() uint64 {
 	b := make([]byte, 64)
-	fmt.Println(string(runtime.Stack(b,false)))
+	fmt.Println(string(runtime.Stack(b, false)))
 	b = b[:runtime.Stack(b, false)]
 	fmt.Println(string(b))
 	b = bytes.TrimPrefix(b, []byte("goroutine "))

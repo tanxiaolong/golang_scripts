@@ -20,7 +20,7 @@ func getGID() uint64 {
 
 func producer(ch chan int, d time.Duration) {
 	var i int
-	for {	
+	for {
 		ch <- i
 		i++
 		time.Sleep(d)

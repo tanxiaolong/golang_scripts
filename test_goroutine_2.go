@@ -1,6 +1,5 @@
 package main
 
-
 import "fmt"
 import "sync"
 import "runtime"
@@ -19,7 +18,7 @@ func main() {
 	//}
 	for i := 0; i < 10000; i++ {
 		go func(i int) {
-			fmt.Printf("i:%d,id:%d\n", i,goid.Get())
+			fmt.Printf("i:%d,id:%d\n", i, goid.Get())
 			wg.Done()
 		}(i)
 	}

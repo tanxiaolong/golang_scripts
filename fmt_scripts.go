@@ -8,7 +8,7 @@ import (
 	"path"
 )
 
-const DIR = "/script/golang/"
+const DIR = "/script/golang/golang_scripts/"
 
 func main() {
 	dir_list, err := ioutil.ReadDir(os.Getenv("HOME") + DIR)

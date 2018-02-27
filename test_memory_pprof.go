@@ -1,13 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
 	"os"
 	"runtime/pprof"
 	"sync"
-	"fmt"
 )
 
 func bigBytes() *[]byte {
@@ -31,7 +31,7 @@ func main() {
 
 	pprof.WriteHeapProfile(os.Stdout)
 	fmt.Println()
-	fmt.Printf("goronties:%+v\n",pprof.Lookup("goroutine").WriteTo(os.Stdout,1))
+	fmt.Printf("goronties:%+v\n", pprof.Lookup("goroutine").WriteTo(os.Stdout, 1))
 	//fmt.Printf("goronties:%+v\n",pprof.Lookup("threadcreate").WriteTo(os.Stdout,2))
 	//fmt.Printf("goronties:%+v\n",pprof.Lookup("heap").WriteTo(os.Stdout,2))
 	//fmt.Printf("goronties:%+v\n",pprof.Lookup("block").WriteTo(os.Stdout,2))

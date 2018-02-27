@@ -4,12 +4,12 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"time"
-	"fmt"
 
 	"github.com/davecgh/go-spew/spew"
 	"github.com/gorilla/mux"

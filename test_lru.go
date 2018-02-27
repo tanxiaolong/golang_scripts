@@ -10,7 +10,7 @@ type CacheNode struct {
 type LruCache struct {
 	Cap      int
 	Used     int
-	lrulist    *list.List
+	lrulist  *list.List
 	CacheMap map[interface{}]*list.Element
 }
 
@@ -24,7 +24,7 @@ func NewLruCache(cap int) *LruCache {
 }
 
 // 清空缓存
-func (lru *LruCache)ResetLruCache() *LruCache{
+func (lru *LruCache) ResetLruCache() *LruCache {
 	lru.Cap = 10
 	lru.lrulist = list.New()
 	lru.CacheMap = map[interface{}]*list.Element{}
@@ -95,19 +95,19 @@ func (lru *LruCache) Remove(k interface{}) (bool, error) {
 }
 
 // 遍历
-func (lru *LruCache) Traversal() ([]interface{},error){
+func (lru *LruCache) Traversal() ([]interface{}, error) {
 	if lru.lrulist == nil {
 		return []interface{}{}, errors.New("LRU 未初始化")
 	}
 	if lru.lrulist.Len() == 0 {
-		return []interface{}{}, nil 
+		return []interface{}{}, nil
 	}
 
 	frontEle := lru.lrulist.Front()
 	vals := []interface{}{frontEle.Value.(*CacheNode).Val}
-	for nxt := frontEle.Next(); nxt != nil ;nxt = nxt.Next(){
-		vals = append(vals,nxt.Value.(*CacheNode).Val)	
+	for nxt := frontEle.Next(); nxt != nil; nxt = nxt.Next() {
+		vals = append(vals, nxt.Value.(*CacheNode).Val)
 	}
-	return vals,nil
+	return vals, nil
 
 }

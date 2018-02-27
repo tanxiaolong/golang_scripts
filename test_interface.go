@@ -21,4 +21,3 @@ func TestGetACat(t *testing.T) {
 		t.Errorf("Forgot to return a real cat!")
 	}
 }
-

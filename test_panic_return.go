@@ -7,6 +7,6 @@ func foo() string {
 	return "结束"
 }
 
-func main(){
+func main() {
 	fmt.Println(foo())
 }

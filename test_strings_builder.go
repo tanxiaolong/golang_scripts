@@ -2,17 +2,16 @@
 
 package main
 
-
 import (
 	"fmt"
 	"strings"
 )
 
-func main(){
+func main() {
 	var b strings.Builder
 	b.WriteString("hello world")
-	fmt.Printf("%+v\n",b)
-	fmt.Printf("%+v\n",b.String())
+	fmt.Printf("%+v\n", b)
+	fmt.Printf("%+v\n", b.String())
 	fmt.Println(b.Len())
 	b.Grow(10)
 	fmt.Println(b.Len())

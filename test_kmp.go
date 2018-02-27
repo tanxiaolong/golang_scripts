@@ -21,10 +21,10 @@ func kmp(origin, find string) bool {
 }
 
 func matchTable2(str string) map[int]int {
-	mt := map[int]int{0:0}
-	
-	for i,k:=1,0;i<len(str);i++{
-		for k>0 && str[i]!=str[k]{
+	mt := map[int]int{0: 0}
+
+	for i, k := 1, 0; i < len(str); i++ {
+		for k > 0 && str[i] != str[k] {
 			k = mt[k-1]
 		}
 
@@ -38,18 +38,18 @@ func matchTable2(str string) map[int]int {
 }
 
 func matchTable(str string) map[int]int {
-	mt := map[int]int{0:0}
+	mt := map[int]int{0: 0}
 
-	for i := 2;i < len(str)+1; i++ {
+	for i := 2; i < len(str)+1; i++ {
 		sub := str[:i]
 		// 获取所有前缀
-		pres := findPresOrSufs(sub,true)
+		pres := findPresOrSufs(sub, true)
 		// 获取所有后缀
-		suffs := findPresOrSufs(sub,false)
+		suffs := findPresOrSufs(sub, false)
 		// 找到最长共有字符串
 		max := 0
-		for m,_ := range pres {
-			if _, ok := suffs[m]; ok{
+		for m, _ := range pres {
+			if _, ok := suffs[m]; ok {
 				if len(m) > max {
 					max = len(m)
 				}
@@ -61,17 +61,17 @@ func matchTable(str string) map[int]int {
 	return mt
 }
 
-func findPresOrSufs(str string, pre bool) map[string]int{
+func findPresOrSufs(str string, pre bool) map[string]int {
 	if len(str) == 1 {
 		return map[string]int{}
 	}
 	rlt := map[string]int{}
 	if pre {
-		for i := 1; i < len(str); i++{
+		for i := 1; i < len(str); i++ {
 			rlt[str[:i]] = 1
 		}
-	}else{
-		for i := 1; i < len(str); i++{
+	} else {
+		for i := 1; i < len(str); i++ {
 			rlt[str[i:]] = 1
 		}
 	}
