@@ -7,9 +7,14 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"fmt"
 )
 
 func main() {
+	route := os.Args[1]
+	fmt.Println(route)
+	
+	//os.Exit(0)
 	c := make(chan notify.EventInfo, 1)
 	//if err := notify.Watch("/home/tanxiaolong/chain-admin...", c, notify.All); err != nil {
 	if err := notify.Watch("./...", c, notify.All); err != nil {
