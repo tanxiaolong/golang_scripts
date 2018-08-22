@@ -1,6 +1,7 @@
 package main
 
 // backgroud:
+// 给wordpress用来着
 // i want to monitor a file which i append a writeStr to whether has been modified
 // i monitor it alone with a modification at the same time.
 import (
