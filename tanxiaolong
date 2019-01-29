@@ -1,0 +1,3 @@
+[tanxiaolong]: Using fmt.Fprintf in tanxiaolong
+Today is a good day
+%!(EXTRA string=tanxiaolong)
