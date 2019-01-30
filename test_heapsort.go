@@ -5,12 +5,38 @@ import (
 )
 
 func main(){
-	arr := []int{5,2,3,9,7,8,1}
+	arr := []int{51,32,73,23,42,62,99,14,24,3943,58,65,80,120}
 	fmt.Println(arr)
-	duipai(arr)
+	heapSort(arr)
 	fmt.Println(arr)
 }
-// 堆排序
+// 最小堆排序
+func heapSort(input []int){
+    inputLen := len(input)
+    if inputLen == 0 {
+        return
+    }
+    for i:=0; i<inputLen; i++{
+        minAjust(input[i:])
+    }
+}
+ 
+func minAjust(input []int){
+    inputLen := len(input)
+    if inputLen <= 1{
+        return
+    }
+    for i:= inputLen/2 -1; i>=0; i--{
+        if (2*i+1 <= inputLen-1) && (input[i] >= input[2*i+1]){
+           input[i], input[2*i+1] = input[2*i+1], input[i]
+        }
+        if (2*i+2<= inputLen-1) && (input[i] >= input[2*i+2]){
+            input[i], input[2*i+2] = input[2*i+2], input[i]
+        }
+    }
+}
+
+// 最大堆排序
 func duipai(buf []int) {
     temp, n := 0, len(buf)
 
