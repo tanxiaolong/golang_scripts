@@ -12,4 +12,5 @@ func defer_call() {
 	defer func() { fmt.Println("打印后") }()
 
 	panic("触发异常")
+	return
 }

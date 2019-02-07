@@ -18,6 +18,7 @@ func heapSort(input []int){
     }
     for i:=0; i<inputLen; i++{
         minAjust(input[i:])
+	break
     }
 }
  
