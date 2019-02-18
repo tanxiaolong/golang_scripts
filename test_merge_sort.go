@@ -1,11 +1,12 @@
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	arr := []int{8, 9, 5, 7, 1, 2, 6, 3}
+	log.Print(arr[1:])
 	result := mergeSort(arr)
-	fmt.Println(result)
+	log.Print(result)
 }
 
 /**
