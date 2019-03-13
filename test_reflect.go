@@ -15,7 +15,11 @@ func main() {
 		Name: "tanxiaolong",
 		Age:  30,
 	}
+    t := reflect.TypeOf(p)
+    fmt.Println(t)
 	val := reflect.ValueOf(p).Elem()
+    structType := val.Type().Kind()
+    fmt.Println("type of the struct is:",structType)
 	for i := 0; i < val.NumField(); i++ {
 		valueField := val.Field(i)
 		typeField := val.Type().Field(i)
