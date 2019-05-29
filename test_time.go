@@ -58,5 +58,22 @@ func main() {
 	hh1 := now.Add(hh)
 	fmt.Println("now:", now.Format("2006-01-02 15:00"))
 	fmt.Println("1 hour after:", hh1.Format("2006-01-02 15:00"))
+	day, _ := time.ParseDuration("-24h")
+	dd1 := now.Add(day)
+	fmt.Println("24 hours after:", dd1.Format("2006-01-02"))
 	fmt.Println("2018-09-02 13:00" < "2018-09-02 14:00")
+	str := "2018-02-12 01:00"
+	fmt.Println(str[:len(str)], len(str))
+	fmt.Println(time.Parse("2006-01-02 15:00", str))
+
+	t := "2019-04-14 15:00"
+	fmt.Println(len(t))
+	t = "2019-04-14"
+	p, err1 := time.Parse("2006-01-02", t)
+	fmt.Println(p)
+	fmt.Println(err1)
+	p, err2 := time.Parse("2006-01-02 15:04", t)
+	fmt.Println(p)
+	fmt.Println(err2)
+	fmt.Println("now:", p.Format("2006010215"))
 }
