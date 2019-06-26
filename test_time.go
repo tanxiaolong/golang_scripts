@@ -45,7 +45,8 @@ func main() {
 	p, err := time.Parse("2006-01-02", x)
 	fmt.Println("123:", err)
 	fmt.Println(p.Date())
-	fmt.Println(x[:4] + x[5:7] + x[8:10])
+	fmt.Println(x)
+	fmt.Println(x[:4] + x[5:7] + x[8:10] + x[11:13] + x[14:16] + x[17:19])
 	fmt.Println("55555%:", x[:10])
 	rlt := p.AddDate(0, 0, 1).Format(GoDay)
 	fmt.Println("rlt:", rlt)
@@ -76,4 +77,9 @@ func main() {
 	fmt.Println(p)
 	fmt.Println(err2)
 	fmt.Println("now:", p.Format("2006010215"))
+
+	fmt.Println("========================")
+	dateStart := "2019-06-13 23:00"
+	_, err = time.Parse("2006-01-02 23:00", dateStart)
+	fmt.Println("err", err)
 }
