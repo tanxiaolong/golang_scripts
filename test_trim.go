@@ -14,4 +14,6 @@ func main() {
 	fmt.Printf("$$$$%s$$$\n", a)
 	fmt.Printf("$$$$%s$$$\n", strings.Trim(a, " "))
 	fmt.Println(strings.Trim(a, " ") == "")
+
+	fmt.Println(strings.TrimSuffix("abcd", "cd"))
 }
