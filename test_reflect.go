@@ -1,5 +1,28 @@
 package main
 
+/*
+how to use:
+
+postman
+
+url   : http://localhost:3000/graphql
+method: post
+body  : choose "GraphQL"
+body content:
+{
+  post(id: 6) {
+    userId
+    id
+    body
+    title
+    comments {
+      id
+      email
+      name
+    }
+  }
+}
+*/
 import (
 	"fmt"
 	"reflect"
@@ -33,4 +56,7 @@ func main() {
 
 		fmt.Printf("Field Name: %s,\t Field Value: %v,\t Tag Value: %s\n", typeField.Name, valueField.Interface(), tag.Get("json"))
 	}
+
+	field := t.Elem().Field(0)
+	fmt.Println(field.Tag.Get("json"))
 }

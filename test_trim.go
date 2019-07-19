@@ -16,4 +16,6 @@ func main() {
 	fmt.Println(strings.Trim(a, " ") == "")
 
 	fmt.Println(strings.TrimSuffix("abcd", "cd"))
+
+	fmt.Println(strings.TrimSpace(" \t\n a lone gopher \n\t\r\n"))
 }
