@@ -1,28 +1,5 @@
 package main
 
-/*
-how to use:
-
-postman
-
-url   : http://localhost:3000/graphql
-method: post
-body  : choose "GraphQL"
-body content:
-{
-  post(id: 6) {
-    userId
-    id
-    body
-    title
-    comments {
-      id
-      email
-      name
-    }
-  }
-}
-*/
 import (
 	"fmt"
 	"reflect"
