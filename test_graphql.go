@@ -74,22 +74,36 @@ func main() {
 }
 
 func createQueryType(postType *graphql.Object) graphql.ObjectConfig {
-	return graphql.ObjectConfig{Name: "QueryType", Fields: graphql.Fields{
-		"post": &graphql.Field{
-			Type: postType,
-			Args: graphql.FieldConfigArgument{
-				"id": &graphql.ArgumentConfig{
-					Type: graphql.NewNonNull(graphql.Int),
+	return graphql.ObjectConfig{
+		Name: "Query",
+		Fields: graphql.Fields{
+			"post": &graphql.Field{
+				Type: postType,
+				Args: graphql.FieldConfigArgument{
+					"id": &graphql.ArgumentConfig{
+						Type: graphql.NewNonNull(graphql.Int),
+					},
+				},
+				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+					id := p.Args["id"]
+					v, _ := id.(int)
+					log.Printf("fetching post with id: %d", v)
+					return fetchPostByiD(v)
 				},
 			},
-			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-				id := p.Args["id"]
-				v, _ := id.(int)
-				log.Printf("fetching post with id: %d", v)
-				return fetchPostByiD(v)
-			},
-		},
-	}}
+			//"comment": &graphql.Field{
+			//	Type: postType,
+			//	Args: graphql.FieldConfigArgument{
+			//		"id": &graphql.ArgumentConfig{},
+			//	},
+			//	Resolve: func(p graphql.ResolveParams) (i interface{}, e error) {
+			//		id := p.Args["id"]
+			//		v, _ := id.(int)
+			//		log.Printf("fetching comment with id: %d", v)
+			//		return fetchCommentByiD(v)
+			//	},
+			//},
+		}}
 }
 
 func createPostType(commentType *graphql.Object) *graphql.Object {
@@ -188,4 +202,27 @@ func fetchCommentsByPostID(id int) ([]Comment, error) {
 		return nil, errors.New("could not unmarshal data")
 	}
 	return result, nil
+}
+
+func fetchCommentByiD(id int) (*Comment, error) {
+	//resp, err := http.Get(fmt.Sprintf("http://jsonplaceholder.typicode.com/posts/%d", id))
+	//if err != nil {
+	//	return nil, err
+	//}
+	//defer resp.Body.Close()
+	//if resp.StatusCode != 200 {
+	//	return nil, fmt.Errorf("%s: %s", "could not fetch data", resp.Status)
+	//}
+	//b, err := ioutil.ReadAll(resp.Body)
+	//if err != nil {
+	//	return nil, errors.New("could not read data")
+	//}
+	result := Comment{
+		PostID: 6,
+		ID:     5,
+		Name:   "什么玩意儿",
+		Email:  "261337699@qq.com",
+		Body:   "文明看球",
+	}
+	return &result, nil
 }
