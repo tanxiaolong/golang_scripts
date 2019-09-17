@@ -82,4 +82,10 @@ func main() {
 	dateStart := "2019-06-13 23:00"
 	_, err = time.Parse("2006-01-02 23:00", dateStart)
 	fmt.Println("err", err)
+
+	txxxxxxxxx := "2019-09-03 23:59"
+	txxxxxxTime, err := time.Parse("2006-01-02 15:04", txxxxxxxxx)
+	fmt.Println("txxxxxxxx:", txxxxxxTime, err)
+	tSSSStr := txxxxxxTime.Format("2006010215")
+	fmt.Println(tSSSStr)
 }

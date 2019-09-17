@@ -24,4 +24,16 @@ func main() {
 	reg = regexp.MustCompile(`^[1-9][0-9]+(,[1-9][0-9]+)*$`)
 	find := reg.MatchString(uid)
 	fmt.Println("333333", find)
+
+	str := "TG1010;TG102;"
+	str = "TG101"
+	str = "TG1011;"
+	str = "TG101;TG10102;"
+	str = "TG101;TG102。。;"
+	reg = regexp.MustCompile(`^(TG\d+;)+$`)
+	find = reg.MatchString(str)
+	fmt.Println(find)
+
+	isMatch, _ := regexp.MatchString(`^(TG\d+;)+$`, str)
+	fmt.Println(isMatch)
 }

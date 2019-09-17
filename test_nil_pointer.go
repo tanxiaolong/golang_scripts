@@ -38,12 +38,22 @@ func main() {
 
 	var aa int64 = 11
 	a := map[interface{}]interface{}{1: 111, 2: "2"}
-	b := map[int64]int64{3: 3}
+	//b := map[int64]int64{3: 3}
 	if val, exists := a[float64(aa)]; !exists {
 		fmt.Println("666", val)
 	}
 	fmt.Println("1", a[float64(aa)])
-	fmt.Println("2", a[float64(aa)].(float64)) // must be checked before a convertion!!!!
-	fmt.Println("3", b[int64(a[float64(aa)].(float64))])
+	//fmt.Println("2", a[float64(aa)].(float64)) // must be checked before a convertion!!!!
+	//fmt.Println("3", b[int64(a[float64(aa)].(float64))])
 
+	atest := make([]int, 3)
+	fmt.Println("aaaaaaa:", atest)
+	aConn := &Conn{
+		a: make([]int, 3),
+	}
+	fmt.Println(aConn.a)
+}
+
+type Conn struct {
+	a []int
 }

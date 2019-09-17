@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"os"
+	"strings"
 )
 
 type A struct {
@@ -10,6 +12,16 @@ type A struct {
 }
 
 func main() {
+
+	test := `{\"6005856\":[\"TG101\",\"TG102\"],\"6005909\":[\"TG101\",\"TG102\",\"TG103\",\"TG104\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\"]}`
+	fmt.Println(test)
+	test = strings.ReplaceAll(test, "\\", "")
+	fmt.Println(test)
+	testArr := map[string][]string{}
+	errr := json.Unmarshal([]byte(test), &testArr)
+	fmt.Println(testArr, errr)
+	os.Exit(200)
+
 	//b := &A{}
 	//a := ""
 	//err := json.Unmarshal([]byte(a), &b)
