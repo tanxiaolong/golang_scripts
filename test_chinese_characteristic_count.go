@@ -7,6 +7,7 @@ import "unicode/utf8"
 func main() {
 	fmt.Println("vim-go")
 	sentence := "合利屋可以取餐了hahaha"
+	fmt.Println(len(sentence))
 	l := utf8.RuneCountInString(sentence)
 	fmt.Println("length of sentence is:", l)
 	for _, word := range sentence {

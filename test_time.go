@@ -88,4 +88,7 @@ func main() {
 	fmt.Println("txxxxxxxx:", txxxxxxTime, err)
 	tSSSStr := txxxxxxTime.Format("2006010215")
 	fmt.Println(tSSSStr)
+
+	yesterday := time.Now().AddDate(0, 0, -1).Format("20060102")
+	fmt.Println("yesterday:", yesterday)
 }

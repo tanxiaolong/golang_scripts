@@ -9,7 +9,6 @@ func kmp(origin, find string) bool {
 	lenFind := len(find)
 	for i < len(origin) {
 		if j < lenFind && find[j] == origin[i] {
-
 			i++
 			j++
 		} else {
@@ -57,7 +56,6 @@ func matchTable(str string) map[int]int {
 		}
 		mt[i-1] = max
 	}
-	fmt.Println(mt)
 	return mt
 }
 
@@ -80,6 +78,6 @@ func findPresOrSufs(str string, pre bool) map[string]int {
 func main() {
 	//origin := "BBC ABCDAB ABCDABCDABDE"
 	find := "ABCDABD"
-	matchTable(find)
+	fmt.Println(matchTable(find))
 	//kmp(origin, find)
 }
