@@ -41,4 +41,10 @@ func main() {
 	str = "124534000000000000.0000"
 	result, err := regexp.MatchString(pattern, str)
 	fmt.Println("\\d+", result, err)
+
+	// pics
+	pattern = `(.*)\.(jpg|bmp|gif|ico|pcx|jpeg|tif|png|raw|tga)$`
+	str = "https://xxx.jpg"
+	result, err = regexp.MatchString(pattern, str)
+	fmt.Println("pics:", result, err)
 }

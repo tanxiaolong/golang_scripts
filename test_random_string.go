@@ -19,4 +19,7 @@ func main() {
 		rlt = append(rlt, charset[r.Intn(len(charset))])
 	}
 	fmt.Println(string(rlt))
+
+	ranNumber := 10000000 + r.Intn(99999999)
+	fmt.Println(ranNumber)
 }

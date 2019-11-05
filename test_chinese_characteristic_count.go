@@ -3,6 +3,7 @@ package main
 import "fmt"
 import "unicode"
 import "unicode/utf8"
+import "regexp"
 
 func main() {
 	fmt.Println("vim-go")
@@ -17,4 +18,7 @@ func main() {
 			fmt.Println("not chinese.")
 		}
 	}
+
+	var hzRegexp = regexp.MustCompile("^[\u4e00-\u9fa5]$")
+	fmt.Println(hzRegexp.MatchString(sentence))
 }

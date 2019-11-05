@@ -91,4 +91,6 @@ func main() {
 
 	yesterday := time.Now().AddDate(0, 0, -1).Format("20060102")
 	fmt.Println("yesterday:", yesterday)
+
+	fmt.Println(time.Now().Format("20060102"))
 }
