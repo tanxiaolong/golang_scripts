@@ -8,6 +8,7 @@ import (
 
 func main() {
 	hans := "中国人"
+	fmt.Println(hans)
 
 	// 默认
 	a := gpy.NewArgs()
