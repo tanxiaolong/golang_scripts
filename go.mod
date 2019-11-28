@@ -24,4 +24,5 @@ require (
 	github.com/robfig/cron v1.2.0
 	github.com/syyongx/php2go v0.9.4
 	github.com/zheng-ji/goAcAutoMachine v0.0.0-20190223025517-9569c67f73f4
+	unknwon.dev/clog/v2 v2.0.0 // indirect
 )
