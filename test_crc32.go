@@ -21,11 +21,11 @@ func main() {
 	str := "123456abcd"
 	str = "49d3f976734b089fe0ba28960948459d"
 	hc := String(str)
-	fmt.Println("hashcode:", hc)
+	fmt.Println(str, " 's hashcode:", hc)
 
 	str = "f0a8bbfdcf08874262abb3aeabdeaa69"
 	hc = String(str)
-	fmt.Println("hc:", hc)
+	fmt.Println(str, " 's hashcode:", hc)
 
 	// todo the two string has same crc32 result....
 	// please refer test_crc64.go

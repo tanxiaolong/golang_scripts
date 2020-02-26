@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"hash/crc64"
-	"reflect"
 )
 
 func main() {
@@ -12,9 +11,9 @@ func main() {
 	//先建立一個table
 	table := crc64.MakeTable(crc64.ECMA)
 	//傳入位元組切片和table，返回一個uint64
-	fmt.Println(crc64.Checksum([]byte(s), table)) //4295263180068867775
+	fmt.Println(s, " 's hashcode: ", crc64.Checksum([]byte(s), table)) //4295263180068867775
 	s = "f0a8bbfdcf08874262abb3aeabdeaa69"
 	rlt := crc64.Checksum([]byte(s), table)
-	fmt.Println(reflect.TypeOf(rlt))
+	fmt.Println(s, " 's hashcode: ", rlt)
 
 }

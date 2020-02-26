@@ -79,7 +79,7 @@ func main() {
 	fmt.Println(p)
 	fmt.Println(err1)
 	p, err2 := time.Parse("2006-01-02 15:04", t)
-	fmt.Println(p)
+	fmt.Println("tanxiaolong", p, p.Format("2006-01-02 15:04"))
 	fmt.Println(err2)
 	fmt.Println("now:", p.Format("2006010215"))
 
@@ -98,4 +98,18 @@ func main() {
 	fmt.Println("yesterday:", yesterday)
 
 	fmt.Println(time.Now().Format("20060102"))
+
+	tt := time.Now()
+	tm1 := time.Date(tt.Year(), tt.Month(), tt.Day(), 23, 59, 59, 0, tt.Location())
+	fmt.Println("today's last second: ", tm1)
+	fmt.Println("today's last second: ", tm1.Unix())
+
+	xxxxxx := "2020-01-04 23:43:35"
+	pp, _ := time.Parse("2006-01-02 15:04:05", xxxxxx)
+	fmt.Printf("ttttttt: %v\n", pp)
+	fmt.Println(pp.Unix())
+
+	ppo := time.Unix(1578470764, 0)
+	fmt.Println(ppo.Format("2006-01-02 15:04"))
+
 }
