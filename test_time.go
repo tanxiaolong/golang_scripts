@@ -112,4 +112,11 @@ func main() {
 	ppo := time.Unix(1578470764, 0)
 	fmt.Println(ppo.Format("2006-01-02 15:04"))
 
+	fmt.Println(time.Now().Unix())
+	fmt.Println(time.Now().UnixNano())
+	fmt.Println(time.Now().UnixNano() / 1e6)
+
+	now = time.Now()
+	fmt.Println(fmt.Sprintf("call_info_%4d%02d", now.Year(), int(now.Month())))
+
 }
