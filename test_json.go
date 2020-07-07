@@ -34,6 +34,15 @@ func main() {
 	asd := "abc"
 	asdBytes, _ := json.Marshal(asd)
 	fmt.Println("asd:", string(asdBytes))
+
+	extra := "{\"report\":0,\"report_reason\":\"\",\"user_status\":1}"
+	decodeOldExtra := map[string]interface{}{}
+	err = json.Unmarshal([]byte(extra), &decodeOldExtra)
+	if err != nil {
+		fmt.Printf("json unmarshal failed, err: %v\n", err)
+		fmt.Printf("extra: %s\n", extra)
+	}
+	fmt.Println(decodeOldExtra)
 }
 
 var str = `{"name":"白色","campaign_id":273,"budget_limit_type":1,"budget":100000,"budget_money":100,"bid":10000,"bid_money":10,"ad_target":{"age":[],"genders":[],"geo_locations":{},"isp":[],"device_brand":[],"user_os":[],"user_network":[],"user_interest":[],"register_time_range":[],"filter_installed_app":100001,"white_list":[1,2,34]},"ad_schedule":{"start_date":"","end_date":"","hours_week":{},"schedule_type":1},"id":380,"customer_id":306205,"conf_status":2,"need_delete":0}`

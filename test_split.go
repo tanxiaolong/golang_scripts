@@ -30,4 +30,18 @@ func main() {
 		}
 	}
 	fmt.Println(123)
+
+	ass := []string{"a", "b", "c", "d"}
+	mark := 0
+	for i, aa := range ass {
+		if aa == "d" {
+			mark = i
+			break
+		}
+	}
+	preHalf := ass[0:mark]
+	fmt.Println(preHalf)
+	newAss := append(preHalf, ass[mark+1:]...)
+	fmt.Println(newAss)
+
 }

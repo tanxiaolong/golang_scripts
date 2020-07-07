@@ -18,6 +18,14 @@ func main() {
 	AddOneToEachElement(slice)
 	fmt.Println("after", slice)
 
+	gids := []string{}
+	gids = append(gids, "")
+	gids = append(gids, "")
+	fmt.Println(len(gids))
+
+	//fmt.Println(gids[3])
+	//fmt.Println("12"[0:111])
+	fmt.Println(slice[2:100])
 }
 
 func AddOneToEachElement(slice []byte) {

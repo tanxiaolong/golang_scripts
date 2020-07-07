@@ -33,4 +33,8 @@ func main() {
 	a := `abc`
 	b := fmt.Sprintf(a+"%s", "d")
 	fmt.Println(b)
+
+	d := "%s,%s,%s"
+	fmt.Println(fmt.Sprintf(d, "1", "2", "3"))
+	fmt.Println(fmt.Sprintf(d, "1", "2"))
 }

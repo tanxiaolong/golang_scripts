@@ -14,4 +14,23 @@ func main() {
 	err := json.Unmarshal([]byte(str), &rlt)
 	fmt.Printf("%+v\n", err)
 	fmt.Println(rlt)
+
+	test := &Test{
+		A: 1,
+		B: str,
+	}
+
+	testBytes, _ := json.Marshal(test)
+	fmt.Println(string(testBytes))
+
+	test2 := &Test{}
+	json.Unmarshal(testBytes, test2)
+	asd := map[string]interface{}{}
+	json.Unmarshal([]byte(test2.B), &asd)
+	fmt.Println(asd)
+}
+
+type Test struct {
+	A int    `json:"a"`
+	B string `json:"b"`
 }

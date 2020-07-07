@@ -110,13 +110,35 @@ func main() {
 	fmt.Println(pp.Unix())
 
 	ppo := time.Unix(1578470764, 0)
-	fmt.Println(ppo.Format("2006-01-02 15:04"))
+	ppo = time.Unix(1588144604, 0)
+	fmt.Println(int(ppo.Month()))
+	fmt.Println("ppo:", ppo.Format("2006-01-02 15:04"))
 
 	fmt.Println(time.Now().Unix())
 	fmt.Println(time.Now().UnixNano())
 	fmt.Println(time.Now().UnixNano() / 1e6)
 
 	now = time.Now()
+	fmt.Println("asd:", now.String())
+	fmt.Println("asdd:", now.Local().String())
 	fmt.Println(fmt.Sprintf("call_info_%4d%02d", now.Year(), int(now.Month())))
+	fmt.Println(fmt.Sprintf("call_info_%4d%02d", now.Year(), now.Month()))
+
+	dateStart = "2020-04-29 11:17:50 +0800 CST"
+	p, err = time.Parse(time.RFC3339, dateStart)
+	fmt.Println(p, err)
+	l, _ := time.LoadLocation("Asia/Shanghai")
+	fmt.Println(time.Now().In(l))
+
+	asd := now.Format("2006年1月2日3时04分")
+	fmt.Println(asd)
+	asd = now.Format("1月2日 15:04")
+	fmt.Println(asd)
+
+	fmt.Println(now.Local().Sub(now))
+
+	xxxxxx = "2020-06-22T14:49:47+08:00"
+	pp, _ = time.Parse(time.RFC3339, xxxxxx)
+	fmt.Println(pp.Format("2006.01.02 15:04:05"))
 
 }

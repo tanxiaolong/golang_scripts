@@ -44,7 +44,8 @@ type UserInfo struct {
 func main() {
 	str := `{"dm_error":0,"error_msg":"请求成功","data":[{"description":"947322","hometown":"947322","id":947322,"portrait":"947322","profession":"947322"},{"description":"794409","hometown":"794409","id":794409,"portrait":"794409","profession":"794409"},{"description":"605181","hometown":"605181","id":605181,"portrait":"605181"}]}`
 	dst := &MUserProfileRsp{}
-	json.Unmarshal([]byte(str), &dst)
-
+	str = ""
+	err := json.Unmarshal([]byte(str), &dst)
+	fmt.Println(err)
 	fmt.Println("vim-go", dst)
 }
