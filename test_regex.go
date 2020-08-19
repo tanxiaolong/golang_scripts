@@ -47,4 +47,9 @@ func main() {
 	str = "https://xxx.jpg"
 	result, err = regexp.MatchString(pattern, str)
 	fmt.Println("pics:", result, err)
+
+	pattern = "\\d+" //反斜杠要转义
+	str = "1245340981209381209381290319023810923810923810283012830192839128301298319238102931239102381902381902831028319283102831092830128318290"
+	result, _ = regexp.MatchString(pattern, str)
+	fmt.Println(result)
 }

@@ -25,7 +25,20 @@ func main() {
 
 	//fmt.Println(gids[3])
 	//fmt.Println("12"[0:111])
-	fmt.Println(slice[2:100])
+	//fmt.Println(slice[2:100])
+
+	fmt.Println("////////////////////")
+	a := make([]int, 5)
+	fmt.Printf("a's addr: %p\n", a)
+	b := a[:4]
+	fmt.Printf("b's addr: %p\n", &b)
+	a[1] = 5
+	fmt.Println(b)
+	a = append(a, 1)
+	fmt.Printf("a's addr: %p\n", &a)
+	a[1] = 6
+	fmt.Println(b)
+	fmt.Println(a)
 }
 
 func AddOneToEachElement(slice []byte) {

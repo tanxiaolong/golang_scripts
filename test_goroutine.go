@@ -4,12 +4,31 @@ import "fmt"
 import "time"
 
 func main() {
-	fmt.Println(1)
-	fmt.Println(2)
-	go func() {
-		time.Sleep(1)
-		fmt.Println(3)
-	}()
-	fmt.Println(4)
-	fmt.Println(5)
+
+	a := []int{3, 4, 5, 6, 7, 8}
+	for i := range a {
+		go func(i int) {
+			fmt.Println(a[i])
+		}(i)
+	}
+
+	time.Sleep(10)
+
+	fmt.Println("================")
+	for _, v := range a {
+		go func(i int) {
+			fmt.Println(i)
+		}(v)
+	}
+	time.Sleep(10)
+
+	fmt.Println("================")
+	for i := 0; i < len(a); i++ {
+		go func(i int) {
+			fmt.Println(a[i])
+		}(i)
+	}
+
+	time.Sleep(10)
+
 }

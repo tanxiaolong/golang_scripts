@@ -4,88 +4,40 @@ import (
 	"encoding/json"
 	"fmt"
 	_ "os"
-	"strings"
+	"reflect"
 )
 
-type A struct {
-	A string
+type ABC struct {
+	A string `json:"a,required"`
+	B int    `json:"b,required"`
 }
 
 func main() {
-
-	test := `{\"6005856\":[\"TG101\",\"TG102\"],\"6005909\":[\"TG101\",\"TG102\",\"TG103\",\"TG104\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\",\"TG101\",\"TG102\"]}`
-	fmt.Println(test)
-	test = strings.ReplaceAll(test, "\\", "")
-	fmt.Println(test)
-	testArr := map[string][]string{}
-	errr := json.Unmarshal([]byte(test), &testArr)
-	fmt.Println(testArr, errr)
-
-	//b := &A{}
-	//a := ""
-	//err := json.Unmarshal([]byte(a), &b)
-	//fmt.Println(err)
-
-	at := &AdReq{}
+	at := &ABC{}
+	str := "{\"a\":\"a\",\"b\":1}"
+	rv2 := reflect.ValueOf(at)
+	fmt.Println("rv of vt2:", rv2)
+	fmt.Println("rt of at", reflect.TypeOf(at))
+	fmt.Println("rt of rv2", reflect.TypeOf(rv2))
+	fmt.Println("elem of rv2", rv2.Elem())
+	//fmt.Println("elem of elem of rv2", rv2.Elem().Elem())
+	kind2 := rv2.Kind()
+	fmt.Println("kind of at", kind2)
+	rv := reflect.ValueOf(&at)
+	fmt.Println("rv of &vt:", rv)
+	fmt.Println("rt of &at", reflect.TypeOf(&at))
+	fmt.Println("rt of rv", reflect.TypeOf(rv))
+	fmt.Println("elem of rv", rv.Elem())
+	fmt.Println("elem of elem of rv", rv.Elem().Elem())
+	kind := rv.Kind()
+	fmt.Println("kind of &at:", kind)
+	fmt.Println("reflect.Ptr:", reflect.Ptr)
+	fmt.Println(rv.IsNil())
 	err := json.Unmarshal([]byte(str), &at)
 	fmt.Printf("%+v\n", at)
 	fmt.Println(err)
 
-	asd := "abc"
-	asdBytes, _ := json.Marshal(asd)
-	fmt.Println("asd:", string(asdBytes))
-
-	extra := "{\"report\":0,\"report_reason\":\"\",\"user_status\":1}"
-	decodeOldExtra := map[string]interface{}{}
-	err = json.Unmarshal([]byte(extra), &decodeOldExtra)
-	if err != nil {
-		fmt.Printf("json unmarshal failed, err: %v\n", err)
-		fmt.Printf("extra: %s\n", extra)
-	}
-	fmt.Println(decodeOldExtra)
-}
-
-var str = `{"name":"白色","campaign_id":273,"budget_limit_type":1,"budget":100000,"budget_money":100,"bid":10000,"bid_money":10,"ad_target":{"age":[],"genders":[],"geo_locations":{},"isp":[],"device_brand":[],"user_os":[],"user_network":[],"user_interest":[],"register_time_range":[],"filter_installed_app":100001,"white_list":[1,2,34]},"ad_schedule":{"start_date":"","end_date":"","hours_week":{},"schedule_type":1},"id":380,"customer_id":306205,"conf_status":2,"need_delete":0}`
-
-var strr = `{"white_list":[1,2]}`
-
-type AdReq struct {
-	ID         int64  `json:"id"`
-	Name       string `json:"name"`
-	CustomerID int64  `json:"customer_id"`
-	CampaignID int64  `json:"campaign_id"`
-
-	BudgetLimitType int   `json:"budget_limit_type"`
-	Budget          int64 `json:"budget"`
-	Bid             int64 `json:"bid"`
-	ConfStatus      int   `json:"conf_status"`
-
-	AdTarget   AdTargetReq   `json:"ad_target"`
-	AdSchedule AdScheduleReq `json:"ad_schedule"`
-
-	NeedDelete int `json:"need_delete"`
-}
-
-type AdScheduleReq struct {
-	StartDate string           `json:"start_date"`
-	EndDate   string           `json:"end_date"`
-	HoursWeek map[string][]int `json:"hours_week"`
-
-	ScheduleType int `json:"schedule_type"`
-}
-
-type AdTargetReq struct {
-	Age                []int            `json:"age"`
-	Genders            []int            `json:"genders"`
-	GeoLocations       map[string][]int `json:"geo_locations"`
-	Isp                []int            `json:"isp"`
-	DeviceBrand        []int            `json:"device_brand"`
-	UserOs             []int            `json:"user_os"`
-	UserNetwork        []int            `json:"user_network"`
-	UserInterest       []int            `json:"user_interest"`
-	RegisterTimeRange  []int            `json:"register_time_range"`
-	FilterInstalledApp int              `json:"filter_installed_app"`
-	WriteList          []int            `json:"white_list"`
-}
-type b struct {
+	a := "{\"c\":123}"
+	err = json.Unmarshal([]byte(a), at)
+	fmt.Printf("\nerr::::::: %+v\n", err)
 }

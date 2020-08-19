@@ -18,6 +18,5 @@ func main(){
 		})
 		fmt.Fprintf(w, "%s", string(rsp))
 	})
-
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

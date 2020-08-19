@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
@@ -36,4 +37,13 @@ func main() {
 	a := 12.3
 	b := fmt.Sprintf("%.2f", a)
 	fmt.Println(b)
+
+	aa := "{\"a\":12.3}"
+	test := &A{}
+	json.Unmarshal([]byte(aa), &test)
+	fmt.Println(test)
+}
+
+type A struct {
+	A int `json:"a"`
 }

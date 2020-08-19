@@ -4,33 +4,9 @@ import "fmt"
 
 import "time"
 import "runtime"
-import "sync"
 
 func main() {
-	print2()
-}
-
-func print1() {
-	fmt.Println("vim-go")
-	swi := true
-	wg := sync.WaitGroup{}
-	for i := 0; i < 100; i++ {
-		wg.Add(1)
-		if swi {
-			go func(i int) {
-				defer wg.Done()
-				fmt.Println("a:", i)
-				swi = false
-			}(i)
-		} else {
-			go func(i int) {
-				defer wg.Done()
-				fmt.Println("b:", i)
-				swi = true
-			}(i)
-		}
-	}
-	wg.Done()
+	print3()
 }
 
 func print2() {
