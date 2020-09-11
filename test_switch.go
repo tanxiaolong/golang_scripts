@@ -3,8 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	a := "a"
+	a := "b"
 	b := "b"
+	aa := "aa"
 	switch a {
 	case "a":
 		if b == "b" {
@@ -13,7 +14,10 @@ func main() {
 		}
 		fmt.Println("666")
 	case "b":
-		fmt.Println("777")
+		if aa == "aa" {
+			fmt.Println("9999")
+		}
+		//fmt.Println("777")
 	default:
 		fmt.Println("888")
 	}

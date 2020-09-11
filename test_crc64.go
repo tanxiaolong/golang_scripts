@@ -15,5 +15,4 @@ func main() {
 	s = "f0a8bbfdcf08874262abb3aeabdeaa69"
 	rlt := crc64.Checksum([]byte(s), table)
 	fmt.Println(s, " 's hashcode: ", rlt)
-	fmt.Println(s, " 's hashcode: ", rlt[len(rlt)-2:len(rlt)])
 }
