@@ -20,7 +20,7 @@ func main() {
 	//arr = strings.Split(str, ",")
 	str = " "
 	arr = strings.Split(str, ",")
-	fmt.Println(5555)
+	fmt.Println(5555, arr, len(arr))
 	a := map[string]int{
 		"a": 1,
 	}
@@ -44,4 +44,24 @@ func main() {
 	newAss := append(preHalf, ass[mark+1:]...)
 	fmt.Println(newAss)
 
+	str = "   	, 	  ,c		"
+	fmt.Println(str)
+	str = strings.TrimSpace(str)
+	fmt.Println(str)
+	arr = strings.Split(str, ",")
+	fmt.Printf("%q\n", arr)
+
+	str = "     ,        "
+	fmt.Println(str)
+	str = strings.TrimSpace(str)
+	fmt.Println(str)
+	arr = strings.Split(str, ",")
+	fmt.Printf("%q\n", arr)
+
+	str = "     ,"
+	arr = strings.Split(str, ",")
+	fmt.Println("666", "???", arr[0] == "", "???", arr[1], "???", len(arr))
+	str = ",     "
+	arr = strings.Split(str, ",")
+	fmt.Println("666", "???", arr[0] == "", "???", arr[1], "???", len(arr))
 }

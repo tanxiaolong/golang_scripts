@@ -36,4 +36,11 @@ func main() {
 
 	field := t.Elem().Field(0)
 	fmt.Println(field.Tag.Get("json"))
+
+	switch structType {
+	case reflect.Struct:
+		fmt.Println(123)
+	case reflect.String:
+		fmt.Println(456)
+	}
 }

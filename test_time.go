@@ -18,6 +18,8 @@ func main() {
 	fmt.Println(s)
 	s = time.Now().Local().Format(GoBirthday)
 	fmt.Println(s)
+	s = time.Now().Local().Format("2006010215")
+	fmt.Println("ttttttttttt", s)
 	s = time.Now().Format(GoDay)
 	fmt.Println("today date:", s)
 	todayTime, _ := time.Parse("2006-01-02", s)
@@ -48,6 +50,7 @@ func main() {
 
 	x := "2019-04-08 14:45:56"
 	p, err := time.Parse("2006-01-02", x)
+	fmt.Println("xxxxxxxxxxxxxxx: %d", p.Unix())
 	fmt.Println("123:", err)
 	fmt.Println(p.Date())
 	fmt.Println(x)
@@ -92,7 +95,7 @@ func main() {
 	txxxxxxTime, err := time.Parse("2006-01-02 15:04", txxxxxxxxx)
 	fmt.Println("txxxxxxxx:", txxxxxxTime, err)
 	tSSSStr := txxxxxxTime.Format("2006010215")
-	fmt.Println(tSSSStr)
+	fmt.Println("tSSSStr", tSSSStr)
 
 	yesterday := time.Now().AddDate(0, 0, -1).Format("20060102")
 	fmt.Println("yesterday:", yesterday)
@@ -140,5 +143,18 @@ func main() {
 	xxxxxx = "2020-06-22T14:49:47+08:00"
 	pp, _ = time.Parse(time.RFC3339, xxxxxx)
 	fmt.Println(pp.Format("2006.01.02 15:04:05"))
+
+	txxxxxxxxx = "2020-10-21 23:59"
+	txxxxxxTime, err = time.Parse("2006-01-02 15:04", txxxxxxxxx)
+	t0 := txxxxxxTime.Truncate(2 * time.Hour)
+	fmt.Println("aaaa", t0)
+	gap1 := txxxxxxTime.Sub(time.Now())
+	gap2 := time.Now().Sub(txxxxxxTime)
+	fmt.Println(gap1, gap1 < 0, gap2, gap2 > 0)
+	key := fmt.Sprintf("%v", txxxxxxTime)
+	fmt.Println("key:", key)
+
+	xy := time.Second * time.Duration(60)
+	fmt.Println("xxxxxxxx::", xy)
 
 }

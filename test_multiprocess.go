@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"golang.org/x/net/context"
 	"sync"
+	"time"
 )
 
 //处理结果
@@ -46,15 +47,33 @@ func MultiProcess(ctx context.Context, procm map[string]MultiProcessFunc, arg in
 	return multiResult
 }
 
+func Seq() {
+
+	time.Sleep(time.Second * 10)
+	time.Sleep(time.Second * 10)
+}
+
 func main() {
 	process := map[string]MultiProcessFunc{}
 	//定时12点和20点给新用户推送
-	pushNew := "12-20-push-new"
-	process[pushNew] = func(ctx context.Context, arg interface{}) (interface{}, error) {
+	process["12-20-push-new"] = func(ctx context.Context, arg interface{}) (interface{}, error) {
 		// do sth
-		fmt.Println(pushNew)
+		time.Sleep(time.Second * 10)
+		fmt.Println("done," + "12-20-push-new")
+		return nil, nil
+	}
+	process["12-30-push-new"] = func(ctx context.Context, args interface{}) (interface{}, error) {
+		time.Sleep(time.Second * 10)
+		fmt.Println("done," + "12-30-push-new")
 		return nil, nil
 	}
 	ctx := context.Background()
+	startAt := time.Now()
 	MultiProcess(ctx, process, nil)
+	duration := time.Since(startAt)
+	fmt.Println(duration)
+	startAt = time.Now()
+	Seq()
+	duration = time.Since(startAt)
+	fmt.Println(duration)
 }
