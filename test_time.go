@@ -156,5 +156,6 @@ func main() {
 
 	xy := time.Second * time.Duration(60)
 	fmt.Println("xxxxxxxx::", xy)
-
+	fmt.Println("week day: ", time.Now().Weekday())
+	fmt.Println("gap: ", int(time.Monday)-int(time.Now().Weekday()))
 }
