@@ -12,6 +12,9 @@ const (
 	F
 )
 
+const i = 100
+var j = 123
+
 func main() {
 	fmt.Println(A)
 	fmt.Println(B)
@@ -19,4 +22,7 @@ func main() {
 	fmt.Println(D)
 	fmt.Println(E)
 	fmt.Println(F)
+	
+	fmt.Println(&j,j)
+	fmt.Println(&i,i)
 }

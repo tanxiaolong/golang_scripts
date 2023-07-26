@@ -20,6 +20,6 @@ func main() {
 	}
 	fmt.Println(string(rlt))
 
-	ranNumber := 10000000 + r.Intn(99999999)
+	ranNumber := 100000000 + r.Intn(999999999)
 	fmt.Println(ranNumber)
 }

@@ -21,4 +21,9 @@ func main() {
 	fmt.Println("eee", e)
 	a = append(a, e...)
 	fmt.Println("aaa", a)
+
+	for i := range a {
+		a = append(a, i)
+		fmt.Printf("%d, %p\n", len(a), a)
+	}
 }

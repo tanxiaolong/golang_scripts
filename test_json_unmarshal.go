@@ -1,91 +1,108 @@
 package main
 
 import "fmt"
-import _ "runtime/debug"
 import "encoding/json"
-import "reflect"
 
-type HobbyInfo struct {
-	Type      string   `json:"type"`
-	Icon      string   `json:"icon"`
-	Color     string   `json:"color"`
-	TextColor string   `json:"text_color"`
-	Title     string   `json:"title"`
-	Tags      []string `json:"tags"`
+// CommentInfo 评论详情结构体
+type CommentInfoRsp struct {
+	Code int64 `json:"code"`
+	Data struct {
+		// key是评论ID
+		Comments map[string]CommentItem `json:"comments"`
+	} `json:"data"`
 }
 
-// 多人响应体
-type MUserProfileRsp struct {
-	DMErr  int        `json:"dm_error"`
-	ErrMsg string     `json:"error_msg"`
-	Data   []UserInfo `json:"data"`
-}
-
-type UserInfo struct {
-	Uid         uint64                   `json:"uid"`
-	Nick        string                   `json:"nick"`
-	Portrait    string                   `json:"portrait"`
-	Gender      int8                     `json:"gender"`
-	Birth       string                   `json:"birth"`
-	Age         int32                    `json:"age"`
-	Signature   string                   `json:"signature"`
-	Media       []map[string]interface{} `json:"media,omitempty"`
-	Back        map[string]interface{}   `json:"back,omitempty"`
-	Hobby       []HobbyInfo              `json:"hobby,omitempty"`
-	Anonymous   int8                     `json:"anonymous"`
-	Description string                   `json:"description"`
-	Profession  string                   `json:"profession"`
-	HomeTown    string                   `json:"hometown"`
-	ID          int64                    `json:"id"`
-	VIPInfo     struct {
-		VIPType   int `json:"vip_type"`
-		VIPStatus int `json:"vip_status"`
-	} `json:"vip_info"`
+// CommentItem 评论详情具体字段
+type CommentItem struct {
+	CheckHotScale string `json:"checkhotscale"`
+	CheckStatus   string `json:"checkstatus"`
+	CheckType     string `json:"checktype"`
+	Content       string `json:"content"`
+	Custom        string `json:"custom"`
+	EmotionalTag  string `json:"emotionalTag"`
+	Extend        struct {
+		At string `json:"at"`
+		Ut string `json:"ut"`
+		Wt string `json:"wt"`
+	} `json:"extend"`
+	Highlight   string `json:"highlight"`
+	ID          string `json:"id"`
+	IsAuthor    string `json:"isauthor"`
+	IsCity      string `json:"iscity"`
+	IsDeleted   string `json:"isdeleted"`
+	IsDown      string `json:"isdown"`
+	IsFans      string `json:"isfans"`
+	IsGod       string `json:"isgod"`
+	IsHide      string `json:"ishide"`
+	IsPick      string `json:"ispick"`
+	OriReplyNum string `json:"orireplynum"`
+	Parent      string `json:"parent"`
+	PokeNum     string `json:"pokenum"`
+	PUserID     string `json:"puserid"`
+	RepNum      string `json:"repnum"`
+	RichType    string `json:"richtype"`
+	RootID      string `json:"rootid"`
+	Source      string `json:"source"`
+	TargetID    string `json:"targetid"`
+	Time        string `json:"time"`
+	Up          string `json:"up"`
+	UserID      string `json:"userid"`
+	VoteID      string `json:"voteid"`
 }
 
 func main() {
-	str := `{"dm_error":0,"error_msg":"请求成功","data":[{"description":"947322","hometown":"947322","id":947322,"portrait":"947322","profession":"947322"},{"description":"794409","hometown":"794409","id":794409,"portrait":"794409","profession":"794409"},{"description":"605181","hometown":"605181","id":605181,"portrait":"605181"}]}`
-	dst := &MUserProfileRsp{}
-	str = ""
-	err := json.Unmarshal([]byte(str), &dst)
+
+	data := `{
+    "code": 0,
+    "data": {
+        "comments": { 
+            "6805046640236494972": {
+                "checkhotscale": "0", 
+                "checkstatus": "0",
+                "checktype": "1", 
+                "content": "\u56de\u590d\u4e00\u5929\u4e86",
+                "custom": "{\"uid\":\"865770910\"}",
+                "emotionalTag": "3",
+                "extend": {
+                    "at": "0",
+                    "ut": "0",
+                    "wt": "0"
+                },
+                "highlight": "0",
+                "id": "6805046640236494972", 
+                "isauthor": "0",
+                "iscity": "0",
+                "isdeleted": "0",
+                "isdown": "0",
+                "isfans": "0",
+                "isgod": "0",
+                "ishide": "0",
+                "ispick": "0",
+                "orireplynum": "0",
+                "parent": "6804716035868190772", 
+                "pokenum": "0",
+                "puserid": "1023231511", 
+                "repnum": "0",
+                "richtype": "0",
+                "rootid": "6804716035868190772",
+                "source": "162",
+                "targetid": "6921368624", 
+                "time": "1622449550",
+                "up": "0",
+                "userid": "584442166", 
+                "voteid": "0"
+            }
+        }
+    }
+}`
+	a := &CommentInfoRsp{}
+	err := json.Unmarshal([]byte(data), a)
 	fmt.Println(err)
-	fmt.Println("vim-go", dst)
+	fmt.Println(a.Data.Comments["6805046640236494972"])
 
-	str = `{"msg_id":159430674800001314,"seq_id":1594306738580,"msg_type":11,"content":"null","type":11,"sender":1142002,"receiver":1161876,"all_unread_count":2,"version_id":1594306748002,"without_sender":0,"without_recipient":0}`
-	data := SendMsgPush{}
-	err = json.Unmarshal([]byte(str), &data)
-	fmt.Printf("unmarshal data:%v\n", err)
-	fmt.Printf("data:%+v\n", data)
-
-	tm := &TextMsg{}
-	fmt.Println("data.Content's type:", reflect.TypeOf(data.Content))
-	txt := data.Content.(string)
-	fmt.Println("xxx:", data.Content)
-	err = json.Unmarshal([]byte(txt), &tm)
-	fmt.Printf("unmarshal tm: %v\n", err)
-	fmt.Printf("tm:%+v\n", tm)
-
-}
-
-type SendMsgPush struct {
-	MsgID            uint64      `json:"msg_id"`
-	SeqID            int64       `json:"seq_id"`
-	MsgType          int8        `json:"msg_type"`
-	Content          interface{} `json:"content"`
-	Type             int8        `json:"type"`
-	SenderUID        uint64      `json:"sender"`
-	PeerUID          uint64      `json:"peer_id"`
-	ReceiveUID       uint64      `json:"receiver"`
-	AllUnreadCount   int64       `json:"all_unread_count"`
-	VersionID        int64       `json:"version_id"`
-	UpdateTime       int64       `json:"update_time"`
-	WithoutSender    int8        `json:"without_sender"`
-	WithoutRecipient int8        `json:"without_recipient"`
-	Extra            string      `json:"extra"`
-}
-
-type TextMsg struct {
-	TextContent struct {
-		Content string `json:"content"`
-	} `json:"text_content"`
+	fmt.Println("------------------")
+	ttt := `{"flopcmtuser":"1310716683","flopcmtid":"6837317350949862287","name_alias":"","flopinfo":{"username":"iantan","vuid":"12345"}}`
+	rlt := map[string]string{}
+	json.Unmarshal([]byte(ttt), &rlt)
+	fmt.Println(rlt, rlt["flopcmtid"])
 }

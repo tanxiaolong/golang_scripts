@@ -6,7 +6,32 @@ import "time"
 import "runtime"
 
 func main() {
-	print3()
+	//print3()
+	print2()
+}
+
+func print() {
+	ch := make(chan int)
+	go func() {
+		for i := 0; i < 101; i++ {
+			if i%2 == 0 {
+				ch <- i
+			}
+		}
+	}()
+	go func() {
+		for i := 0; i < 101; i++ {
+			if i%2 != 0 {
+				ch <- i
+			}
+		}
+	}()
+	for {
+		select {
+		case d := <-ch:
+			fmt.Println(d)
+		}
+	}
 }
 
 func print2() {

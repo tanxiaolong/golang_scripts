@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"time"
 )
 
@@ -12,6 +13,8 @@ var (
 )
 
 func main() {
+	var a time.Time
+	fmt.Println(a)
 	s := time.Now().Local().String()
 	fmt.Println(s)
 	s = time.Now().Local().Format(GoBirthDatetime)
@@ -158,4 +161,17 @@ func main() {
 	fmt.Println("xxxxxxxx::", xy)
 	fmt.Println("week day: ", time.Now().Weekday())
 	fmt.Println("gap: ", int(time.Monday)-int(time.Now().Weekday()))
+
+	strTs := "1638421736"
+	ts, err := strconv.Atoi(strTs)
+	fmt.Println(err, time.Unix(int64(ts), 0))
+
+	id := "140602198912289015"
+	id = id[6:14]
+	idTime ,err:= time.Parse("20060102", id)
+	d := time.Since(idTime)
+	fmt.Println(d.String())
+	fmt.Println(time.Now().Hour(),time.Now().Month(),time.Now().Day(),time.Now().Minute())
+
+
 }

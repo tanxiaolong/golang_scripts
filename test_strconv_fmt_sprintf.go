@@ -13,4 +13,6 @@ func main() {
 	fmt.Sprintf("%d", "1")
 	t4 := time.Now()
 	fmt.Println(t4.Sub(t3))
+	a, err := strconv.Atoi("")
+	fmt.Println(a, err)
 }

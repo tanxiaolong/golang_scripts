@@ -32,4 +32,5 @@ func main() {
 		go calcSum(&wg, i)
 	}
 	wg.Wait()
+
 }

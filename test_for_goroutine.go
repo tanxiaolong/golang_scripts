@@ -10,11 +10,11 @@ func main() {
 		go func() {
 			fmt.Println(i, val)
 		}()
-		//go aaa(val)
+		go aaa(i, val)
 	}
 	time.Sleep(1 * time.Second)
 }
 
-func aaa(i string) {
-	fmt.Println(i)
+func aaa(pod int, i string) {
+	fmt.Println("aaa", pod, i)
 }

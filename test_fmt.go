@@ -37,4 +37,7 @@ func main() {
 	d := "%s,%s,%s"
 	fmt.Println(fmt.Sprintf(d, "1", "2", "3"))
 	fmt.Println(fmt.Sprintf(d, "1", "2"))
+
+	fmt.Println(fmt.Sprintf("%:3s", "123456"))
+
 }

@@ -86,6 +86,51 @@ func main() {
 	fmt.Println("yyyyyyyyyyyyyyyyyyyyy: ", yy[:5])
 	yy = yy[:5]
 	fmt.Println("yyyyyyyyyyyyyyyyyyyyy: ", yy)
+
+	s := make([]int, 10000)
+fmt.Println("s len:", len(s), " cap:", cap(s))
+aa := s[:3]
+fmt.Println("a len:", len(aa), " cap:", cap(aa))
+ba := s[3:]
+fmt.Println("b len:", len(ba), " cap:", cap(ba))
+
+	s = []int{1, 1, 1}
+        fmt.Println("s",s)
+	myAppend(s)
+	fmt.Println("myAppend", s)
+	newS := myAppendNew(s)
+	fmt.Println("myAppendNew",newS)
+	myAppendPtr(&s)
+	fmt.Println("myAppendPtr",s)
+	myMod(s)
+	fmt.Println("myMod",s)
+
+	kk := make([]int, 0)
+	mm := new([]int)
+ 	*mm = append(*mm, 1)
+	fmt.Println("kk", kk, " mm", mm)
+}
+
+func myAppendNew(s []int) []int {
+	// 这里 s 虽然改变了，但并不会影响外层函数的 s
+	s = append(s, 100)
+	return s
+}
+
+func myAppendPtr(s *[]int) {
+	// 会改变外层 s 本身
+	*s = append(*s, 100)
+	return
+}
+
+func myAppend(s []int) {
+	s = append(s, 1)
+}
+
+func myMod(s []int) {
+	for i := range s {
+		s[i] = s[i]+2
+	}
 }
 
 func AddOneToEachElement(slice []byte) {

@@ -22,7 +22,7 @@ func ConcurrentModify(rlt []string) []string {
 	return target
 }
 
-func SeqModify(rlt []string) []string{
+func SeqModify(rlt []string) []string {
 	target := make([]string, len(rlt))
 	for i, item := range rlt {
 		item := item
@@ -33,15 +33,15 @@ func SeqModify(rlt []string) []string{
 
 func main() {
 
-	origin := []string{"1", "2", "3","4","5","6","7","8","9"}
+	origin := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9"}
 	fmt.Println("origin:", origin)
 	startAt := time.Now()
 	target := ConcurrentModify(origin)
 	duration := time.Since(startAt)
-	fmt.Println("concurrent:", duration,"target:",target)
+	fmt.Println("concurrent:", duration, "target:", target)
 	startAt = time.Now()
 	target = SeqModify(origin)
 	duration = time.Since(startAt)
-	fmt.Println("seq:", duration,"target:",target)
-
+	fmt.Println("seq:", duration, "target:", target)
+	fmt.Println("aaaa: %v", duration.Seconds())
 }
